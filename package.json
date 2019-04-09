@@ -1,0 +1,25 @@
+{
+  "name": "fullstack postgresql",
+  "version": "1.0.0",
+  "description": "fullstack app with node",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "server": "nodemon index"
+  },
+  "keywords": [
+    "express",
+    "mongo"
+  ],
+  "author": "Wendelin Gerein",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
