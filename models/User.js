@@ -30,6 +30,7 @@ const User = db.define('users',
         schema: 'public'
     }
 )
+
 module.exports = {
     db,
     User
