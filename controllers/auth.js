@@ -3,8 +3,8 @@ const { User } = require('../models/User')
 module.exports.login = function (req, res) {
     return User
         .findOne({
-            email: req.body.email = User.email,
-            password: req.body.password = User.password
+            email: req.body.email,
+            password: req.body.password
         })
         .then((users) => res.status(201).send(users))
         .catch((error) => res.status(400).send(error));
@@ -12,8 +12,12 @@ module.exports.login = function (req, res) {
 
 module.exports.register = async function (req, res) {
 
-    const candidate = await User.findOne({email: req.body.email})
-
+    const candidate = await User.findOne(
+        {
+            where: {
+                email: req.body.email
+            }
+        })
     if(candidate){
         res.status(409).json({
             message: 'User exist'
@@ -24,6 +28,10 @@ module.exports.register = async function (req, res) {
             email: req.body.email,
             password: req.body.password
         })
+        .then(() => res.status(201).json({
+            message: 'User Created'
+        }))
+        .catch((error) => res.status(400).send(error));
     }
 
 }
