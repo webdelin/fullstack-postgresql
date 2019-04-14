@@ -1,13 +1,16 @@
 const Sequelize = require('sequelize')
+const keys = require('../config/keys')
 
-const db = new Sequelize('postgres://fullstack:Wendelin6@5.189.143.82:5432/fullstack');
+const db = new Sequelize(keys.dbUri)
 
 const User = db.define('users',
     {
-        uuid: {
+        id: {
             type: Sequelize.UUID,
             defaultValue: Sequelize.UUIDV4,
-            primaryKey: true
+            primaryKey: true,
+            unique:true,
+            allowNull: false
         },
         email: {
             type: Sequelize.STRING,
@@ -30,7 +33,9 @@ const User = db.define('users',
         schema: 'public'
     }
 )
-
+User.sync({
+    //force: true
+});
 module.exports = {
     db,
     User
