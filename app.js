@@ -18,7 +18,7 @@ db.authenticate()
     console.log('PGSQL Connection successfully.');
 })
 .catch(err => {
-    console.error('Unable to connect to the database:', err);
+    console.error('Unable to the database:', err);
 })
 
 app.use(passport.initialize())
